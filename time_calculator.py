@@ -26,11 +26,11 @@ def add_time(start, duration, dayOfWeek = ''):
     if len(newMin) == 1:
         newMin = ''.join(['0', newMin])
 
-    newHours = int((timeMin - timeMin % 60)  / 60)
+    newHours = timeMin  / 60
 
     # Cheap fix for 12am so that it doesn't return as 00:00 am
-    if newHours %12 != 0:
-        new_time = ':'.join([str(newHours %24), newMin])
+    if int(newHours) %12 != 0:
+        new_time = ':'.join([str(int(newHours) %12), newMin])
     else:
         new_time = ':'.join(['12', newMin])
         
